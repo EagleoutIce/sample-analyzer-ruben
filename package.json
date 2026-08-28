@@ -1,0 +1,23 @@
+{
+  "name": "query-project-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "main": "ts-node src/main.ts",
+    "build": "tsc --project . && esbuild --bundle dist/main.js --platform=node --tree-shaking=true --bundle --minify --external:clipboardy --target=node26 --outfile=dist/main.min.js && npm run build:copy-wasm",
+    "build:copy-wasm": "mkdir -p dist/node_modules/@davisvaughan/tree-sitter-r/ && mkdir -p dist/node_modules/web-tree-sitter && cp node_modules/@davisvaughan/tree-sitter-r/tree-sitter-r.wasm dist/node_modules/@davisvaughan/tree-sitter-r/  && cp node_modules/web-tree-sitter/tree-sitter.wasm dist/node_modules/web-tree-sitter/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "esbuild": "^0.28.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@eagleoutice/flowr": "^2.15.8"
+  }
+}
